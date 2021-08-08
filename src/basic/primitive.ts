@@ -1,4 +1,4 @@
-export default function primitiveSmale() {
+export default function primitiveSmale(): void {
   const name = 'トラハック'
   //name = 123
   console.log('primitive sample 1:', typeof name, name)

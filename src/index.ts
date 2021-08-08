@@ -1,9 +1,9 @@
 import { unknownSample, anySample, noExistSample, primitiveSample } from './basic'
 
-unknownSample()
-anySample()
-noExistSample()
 primitiveSample()
+noExistSample()
+anySample()
+unknownSample()
 
 // import World from "./world";
 
@@ -11,6 +11,8 @@ primitiveSample()
 // const world = new World("Hello World!");
 // world.sayHello(root);
 
+/*
+// 課題１
 const divLesson1 = (num: number): void => {
   let result = ''
   for (let cnt = 1; cnt <= num; ++cnt) {
@@ -29,6 +31,7 @@ const divLesson1 = (num: number): void => {
 console.log('pattern1')
 divLesson1(100)
 
+// 課題２
 const divLesson2 = (num: number): string => {
   let result = ''
   result += !(num % 15) ? 'FB ' : !(num % 3) ? 'F ' : !(num % 5) ? 'B ' : String(num) + ' '
@@ -42,8 +45,4 @@ const divLesson3 = (num: number): string =>
   (!(num % 15) ? 'FB ' : !(num % 3) ? 'F ' : !(num % 5) ? 'B ' : String(num) + ' ')
 console.log('pattern3')
 console.log(divLesson3(100))
-
-const divLesson4 = (num: number): string =>
-  (num != 1 ? divLesson4(num - 1) : '') + (((!(num % 3) && 'F') || (!(num % 5) && 'B')) && String(num))
-console.log('pattern4')
-console.log(divLesson4(3))
+*/
