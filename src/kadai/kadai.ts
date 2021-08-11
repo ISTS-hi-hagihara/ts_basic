@@ -126,19 +126,4 @@ export default function divLesson(): void {
   console.log('課題２ pattern 35: ', divLesson35(100))
 
   console.log('課題３ pattern 4: ', divLesson4(100))
-
-  /*
-  const resultAA = new DivCheck(new divNumberCheck())
-  //   let data = new Array(100)
-  //     .fill(0)
-  //     .map((v, i) => (resultAA.isCheck(i + 1) ? resultAA.printChar() : i+1))
-  const array100 = new Array(100).fill(0).map((v, i) => i + 1)
-  const data = array100.map((v, i) => (resultAA.isCheck(i + 1) ? resultAA.printChar() : v))
-  const data2 = data.map((v, i) => (resultAA.isCheck(i + 2) ? resultAA.printChar() : v))
-  console.log('kadai pattern 4: ', data2)
-*/
-
-  //const xxx = new PairTicketStrategy()
-  //console.log('test test ', xxx.getPrice())
-  //let aaaa = new Ticket(PairTicketStrategy)
 }
