@@ -60,15 +60,85 @@ const divLesson35 = (num: number): string => {
     .map((v, i) => (i++, (result += !(i % 15) ? 'FB, ' : !(i % 3) ? 'F, ' : !(i % 5) ? 'B, ' : String(i) + ', ')))
   return result
 }
+
+// 課題３：ストラテジパターン（作業時間：2時間程度）
+// チェックストラテジ
+interface NumCheckStrategy {
+  printChar(): string
+  isCheck(num: number): boolean
+}
+
+// 3で割れる数
+class div3 implements NumCheckStrategy {
+  printChar = (): string => 'F'
+  isCheck = (num: number): boolean => !(num % 3)
+}
+
+// 5で割れる数
+class div5 implements NumCheckStrategy {
+  printChar = (): string => 'B'
+  isCheck = (num: number): boolean => !(num % 5)
+}
+
+// 15で割れる数
+class div15 implements NumCheckStrategy {
+  printChar = (): string => 'FB'
+  isCheck = (num: number): boolean => !(num % 15)
+}
+
+class DivCheck {
+  private _strategy: NumCheckStrategy
+
+  constructor(strategy: NumCheckStrategy) {
+    this._strategy = strategy
+  }
+
+  printChar = (): string => this._strategy.printChar()
+  isCheck = (num: number): boolean => this._strategy.isCheck(num)
+}
+
+const divLesson4 = (num: number): (number | string)[] => {
+  let array100: (number | string)[] = new Array(100).fill(num).map((v, i) => i + 1)
+  let divChk: NumCheckStrategy
+
+  divChk = new DivCheck(new div3())
+  array100 = array100.map((v, i) => (divChk.isCheck(i + 1) ? divChk.printChar() : v))
+
+  divChk = new DivCheck(new div5())
+  array100 = array100.map((v, i) => (divChk.isCheck(i + 1) ? divChk.printChar() : v))
+
+  divChk = new DivCheck(new div15())
+  array100 = array100.map((v, i) => (divChk.isCheck(i + 1) ? divChk.printChar() : v))
+
+  return array100
+}
+
 // 課題の実行
 export default function divLesson(): void {
-  console.log('kadai pattern 1: ', divLesson1(100))
+  console.log('課題１ pattern 1: ', divLesson1(100))
 
-  console.log('kadai pattern 2: ', divLesson2(100))
+  console.log('課題２ pattern 2: ', divLesson2(100))
 
-  console.log('kadai pattern 2.5: ', divLesson25(100))
+  console.log('課題２ pattern 2.5: ', divLesson25(100))
 
-  console.log('kadai pattern 3: ', divLesson3(100))
+  console.log('課題２ pattern 3: ', divLesson3(100))
 
-  console.log('kadai pattern 35: ', divLesson35(100))
+  console.log('課題２ pattern 35: ', divLesson35(100))
+
+  console.log('課題３ pattern 4: ', divLesson4(100))
+
+  /*
+  const resultAA = new DivCheck(new divNumberCheck())
+  //   let data = new Array(100)
+  //     .fill(0)
+  //     .map((v, i) => (resultAA.isCheck(i + 1) ? resultAA.printChar() : i+1))
+  const array100 = new Array(100).fill(0).map((v, i) => i + 1)
+  const data = array100.map((v, i) => (resultAA.isCheck(i + 1) ? resultAA.printChar() : v))
+  const data2 = data.map((v, i) => (resultAA.isCheck(i + 2) ? resultAA.printChar() : v))
+  console.log('kadai pattern 4: ', data2)
+*/
+
+  //const xxx = new PairTicketStrategy()
+  //console.log('test test ', xxx.getPrice())
+  //let aaaa = new Ticket(PairTicketStrategy)
 }
